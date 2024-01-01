@@ -26,7 +26,7 @@ const greeting = {
     "A passionate Android Software Developer 🚀 having an experience of building Mobile applications with Kotlin / Flutter and some other cool libraries and frameworks."
   ),
   resumeLink:
-    "https://drive.google.com/file/d/1ofFdKF_mqscH8WvXkSObnVvC9kK7Ldlu/view?usp=sharing", // Set to empty to hide the button
+    "https://drive.google.com/file/d/1Bvugrku0vGzJnuWdDrb6i3NO4XTndSqn/view?usp=sharing", // Set to empty to hide the button
   displayGreeting: true // Set false to hide this section, defaults to true
 };
 
