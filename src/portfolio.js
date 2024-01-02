@@ -110,7 +110,7 @@ const educationInfo = {
     },
     {
       schoolName: "Bangkit Academy",
-      logo: require("./assets/images/bangkit.jpg"),
+      logo: require("./assets/images/bangkit.jpg.png"),
       subHeader: "Android Development",
       duration: "August 2023 - January 2024",
       desc: "Learn android programming from zero to intermediate level of android programming. I also have final project that do by team of 6 member.",
