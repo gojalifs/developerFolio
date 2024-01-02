@@ -102,7 +102,7 @@ const educationInfo = {
   schools: [
     {
       schoolName: "Universitas Pelita Bangsa",
-      logo: require("./assets/images/harvardLogo.png"),
+      logo: require("./assets/images/upb.png"),
       subHeader: "Bachelor Degree in Computer Science",
       duration: "September 2019 - Februari 2024",
       desc: "",
@@ -110,7 +110,7 @@ const educationInfo = {
     },
     {
       schoolName: "Bangkit Academy",
-      logo: require("./assets/images/stanfordLogo.png"),
+      logo: require("./assets/images/bangkit.jpg"),
       subHeader: "Android Development",
       duration: "August 2023 - January 2024",
       desc: "Learn android programming from zero to intermediate level of android programming. I also have final project that do by team of 6 member.",
@@ -152,7 +152,7 @@ const workExperiences = {
     {
       role: "Production Machine Operator",
       company: "PT Yamaha Music Manufacturing Indonesia",
-      companylogo: require("./assets/images/facebookLogo.png"),
+      companylogo: require("./assets/images/yamaha-music.png"),
       date: "November 2019 – June 2023",
       desc: "Produce a guitar using spindle shaft machine.",
       descBullets: [
@@ -163,7 +163,7 @@ const workExperiences = {
     {
       role: "Production Machine Operator",
       company: "PT TSTech Indonesia",
-      companylogo: require("./assets/images/quoraLogo.png"),
+      companylogo: require("./assets/images/tstech.png"),
       date: "August 2017 – July 2019",
       desc: "Produce a car seat.",
       descBullets: [
@@ -189,7 +189,7 @@ const bigProjects = {
   subtitle: "SOME MY BIG PROJECT THAT HAS BEEN DONE",
   projects: [
     {
-      image: require("./assets/images/saayaHealthLogo.webp"),
+      image: require("./assets/images/nutricatch.png"),
       projectName: "Nutricatch",
       projectDesc: "An app that can track user nutrition from their eating.",
       footerLink: [
@@ -201,7 +201,7 @@ const bigProjects = {
       ]
     },
     {
-      image: require("./assets/images/nextuLogo.webp"),
+      image: require("./assets/images/sjo.jpg"),
       projectName: "Satria Jaya Optik",
       projectDesc: "Online shop of glasses.",
       footerLink: [
