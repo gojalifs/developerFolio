@@ -10,25 +10,26 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Create env
-      - run: echo "REACT_APP_GITHUB_TOKEN=${{ REACT_APP_GITHUB_TOKEN }}" >> "$GITHUB_ENV"
-      - run: echo "GITHUB_USERNAME"=${{ GITHUB_USERNAME }}" >> "$GITHUB_ENV"
-      
-    steps:
+      - name: Create env  # Assuming these lines create environment variables
+        run: |
+          echo "REACT_APP_GITHUB_TOKEN=${{ REACT_APP_GITHUB_TOKEN }}" >> "$GITHUB_ENV"
+          echo "GITHUB_USERNAME=${{ GITHUB_USERNAME }}" >> "$GITHUB_ENV"
+          echo "USE_GITHUB_DATA=${{ USE_GH_DATA }}" >> "$GITHUB_ENV"
+
       - name: Checkout code (limited depth)
         uses: actions/checkout@v3
         with:
           fetch-depth: 1
 
-      - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
+
       - run: npm ci
       - run: npm run build --if-present
-    # - run: npm test
+      # - run: npm test
       - run: ls
 
       - name: executing remote ssh commands using password
@@ -43,6 +44,9 @@ jobs:
             whoami
             cd /var/www/fajarsidik.site/
             scp -R build/* ecs_user@${{ secrets.DEPLOY_HOST }}:$@{{ secrets.DEPLOY_TARGET }}
+
+# Removed commented-out build and deploy steps
+
           
       #   env:
       #     SSH_PASSPHRASE: ${{ secrets.SSH_PASSPHRASE }}
