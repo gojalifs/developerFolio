@@ -34,19 +34,11 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           passphrase: ${{ secrets.PASSPHRASE }}
-          script: whoami
-
-      # - name: Set up SSH agent
-      #   run: |
-      #     echo "## Setting up SSH agent"
-      #     eval "$(ssh-agent -s)"
-      #     echo "${{ secrets.PASSPHRASE }}" | ssh-add ${{ secrets.KEY }}
-      #     if [ $? -ne 0 ]; then
-      #       echo "## Error adding SSH key to agent"
-      #       exit 1
-      #     fi
-      #     echo "## SSH Connection estabilished"
-
+          script: |
+            whoami
+            cd /var/www/
+            ls
+          
       #   env:
       #     SSH_PASSPHRASE: ${{ secrets.SSH_PASSPHRASE }}
       #     # Avoid storing private key path directly (use secret)
