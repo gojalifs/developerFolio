@@ -25,8 +25,8 @@ jobs:
         uses: SpicyPizza/create-envfile@v2.0
         with:
           envkey_REACT_APP_GITHUB_TOKEN: ${{ secrets.REACT_APP_GITHUB_TOKEN }}
-          envkey_GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
-          envkey_USE_GITHUB_DATA: ${{ secrets.USE_GITHUB_DATA }}
+          envkey_GITHUB_USERNAME: "gojalifs"
+          envkey_USE_GITHUB_DATA: ${{ secrets.USE_GH_DATA }}
       - run: cat .env
 
       - name: Use Node.js ${{ matrix.node-version }}
