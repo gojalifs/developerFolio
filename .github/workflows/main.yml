@@ -45,7 +45,7 @@ jobs:
 
         # working-directory: ./build
       - run: ls
-      - run: cp -R build/* ${{ secrets.ECS_USERNAME }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_TARGET_VAR }}
+      - run: sudo cp -R build/* ${{ secrets.ECS_USERNAME }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_TARGET_VAR }}
       # - run: cd build/
         # copy built file into server
       # # - uses: actions/checkout@v4
