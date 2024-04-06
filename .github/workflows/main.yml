@@ -29,22 +29,22 @@ jobs:
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.ECS_USERNAME }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           script: whoami
 
-      - name: Set up SSH agent
-        run: |
-          echo "## Setting up SSH agent"
-          eval "$(ssh-agent -s)"
-          echo "${{ secrets.PASSPHRASE }}" | ssh-add ${{ secrets.KEY }}
-          if [ $? -ne 0 ]; then
-            echo "## Error adding SSH key to agent"
-            exit 1
-          fi
-          echo "## SSH Connection estabilished"
+      # - name: Set up SSH agent
+      #   run: |
+      #     echo "## Setting up SSH agent"
+      #     eval "$(ssh-agent -s)"
+      #     echo "${{ secrets.PASSPHRASE }}" | ssh-add ${{ secrets.KEY }}
+      #     if [ $? -ne 0 ]; then
+      #       echo "## Error adding SSH key to agent"
+      #       exit 1
+      #     fi
+      #     echo "## SSH Connection estabilished"
 
       #   env:
       #     SSH_PASSPHRASE: ${{ secrets.SSH_PASSPHRASE }}
