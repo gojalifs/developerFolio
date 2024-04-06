@@ -1,0 +1,49 @@
+name: Deploy to ECS
+
+on:
+  push:
+    branches: [ master ]  # Adjust the branch to trigger on
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code (limited depth)
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+
+      - name: Set up SSH agent
+        run: |
+          echo "## Setting up SSH agent"
+          eval "$(ssh-agent -s)"
+          echo "${{ secrets.PASSPHRASE }}" | ssh-add ${{ secrets.KEY }}
+          if [ $? -ne 0 ]; then
+            echo "## Error adding SSH key to agent"
+            exit 1
+          fi
+
+        env:
+          SSH_PASSPHRASE: ${{ secrets.SSH_PASSPHRASE }}
+          # Avoid storing private key path directly (use secret)
+          SSH_PRIVATE_KEY_PATH: ""
+
+      - name: Build Node.js app
+        run: |
+          npm install
+          npm run build  # Replace with your build command
+
+      # - name: Deploy to ECS via SSH
+      #   uses: appleboy/ssh-action@master
+      #   with:
+      #     host: ${{ secrets.ECS_HOST }}
+      #     username: ${{ secrets.ECS_USERNAME }}
+      #     # Reference private key path from secret (not directly)
+      #     key: ${{ secrets.SSH_PRIVATE_KEY_PATH }}
+      #     port: 22  # Adjust if using a different SSH port
+      #     script: |
+      #       cd /path/to/deployment/directory  # Replace with the path on your ECS instance
+      #       git pull
+      #       npm install
+      #       npm start  # Replace with your Node.js app startup command
