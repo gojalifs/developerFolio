@@ -42,7 +42,7 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
             whoami
-            cd /var/www/fajarsidik.site/
+            cd 
             scp -R build/* ${{ secrets.ECS_USERNAME }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_TARGET }}
 
 # Removed commented-out build and deploy steps
