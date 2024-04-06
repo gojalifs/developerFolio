@@ -12,9 +12,9 @@ jobs:
     steps:
       - name: Create env  # Assuming these lines create environment variables
         run: |
-          echo "REACT_APP_GITHUB_TOKEN=${{ secret.REACT_APP_GITHUB_TOKEN }}" >> "$GITHUB_ENV"
-          echo "GITHUB_USERNAME=${{ secret.GITHUB_USERNAME }}" >> "$GITHUB_ENV"
-          echo "USE_GITHUB_DATA=${{ secret.USE_GH_DATA }}" >> "$GITHUB_ENV"
+          echo "REACT_APP_GITHUB_TOKEN=${{ secrets.REACT_APP_GITHUB_TOKEN }}" >> "$GITHUB_ENV"
+          echo "GITHUB_USERNAME=${{ secrets.GITHUB_USERNAME }}" >> "$GITHUB_ENV"
+          echo "USE_GITHUB_DATA=${{ secrets.USE_GH_DATA }}" >> "$GITHUB_ENV"
 
       - name: Checkout code (limited depth)
         uses: actions/checkout@v3
