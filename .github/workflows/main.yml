@@ -23,16 +23,17 @@ jobs:
             echo "## Error adding SSH key to agent"
             exit 1
           fi
+          echo "## SSH Connection estabilished"
 
-        env:
-          SSH_PASSPHRASE: ${{ secrets.SSH_PASSPHRASE }}
-          # Avoid storing private key path directly (use secret)
-          # SSH_PRIVATE_KEY_PATH: ""
+      #   env:
+      #     SSH_PASSPHRASE: ${{ secrets.SSH_PASSPHRASE }}
+      #     # Avoid storing private key path directly (use secret)
+      #     # SSH_PRIVATE_KEY_PATH: ""
 
-      - name: Build Node.js app
-        run: |
-          npm install
-          npm run build  # Replace with your build command
+      # - name: Build Node.js app
+      #   run: |
+      #     npm install
+      #     npm run build  # Replace with your build command
 
       # - name: Deploy to ECS via SSH
       #   uses: appleboy/ssh-action@master
