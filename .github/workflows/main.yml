@@ -27,6 +27,7 @@ jobs:
           envkey_REACT_APP_GITHUB_TOKEN: ${{ secrets.REACT_APP_GITHUB_TOKEN }}
           envkey_GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
           envkey_USE_GITHUB_DATA: ${{ secrets.USE_GITHUB_DATA }}
+      - run: cat .env
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
