@@ -31,17 +31,17 @@ jobs:
       - run: npm run build --if-present
       # - run: npm test
 
-      # - name: executing remote ssh commands using password
-      #   uses: appleboy/ssh-action@v1.0.3
-      #   with:
-      #     host: ${{ secrets.DEPLOY_HOST }}
-      #     username: ${{ secrets.ECS_USERNAME }}
-      #     key: ${{ secrets.KEY }}
-      #     port: ${{ secrets.PORT }}
-      #     passphrase: ${{ secrets.PASSPHRASE }}
-      #     script: |
-      #       ls
-      #       cd ${{ secrets.DEPLOY_TARGET }}
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.ECS_USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          passphrase: ${{ secrets.PASSPHRASE }}
+          script: |
+            ls
+            cd ${{ secrets.DEPLOY_TARGET }}
 
         # working-directory: ./build
       - run: ls
