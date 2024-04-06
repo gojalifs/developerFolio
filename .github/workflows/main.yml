@@ -9,7 +9,11 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+    steps:
+      - name: Create env
+      - run: echo "REACT_APP_GITHUB_TOKEN=${{ REACT_APP_GITHUB_TOKEN }}" >> "$GITHUB_ENV"
+      - run: echo "GITHUB_USERNAME"=${{ GITHUB_USERNAME }}" >> "$GITHUB_ENV"
+      
     steps:
       - name: Checkout code (limited depth)
         uses: actions/checkout@v3
@@ -22,11 +26,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-      - run: |
-          dotenv -e .env  # Optional: Load local .env for development purposes
-          REACT_APP_GITHUB_TOKEN=${{ secrets.REACT_APP_GITHUB_TOKEN }} GITHUB_USERNAME=${{ secrets.GITHUB_USERNAME }} USE_GITHUB_DATA=${{ secrets.USE_GH_DATA }}
-          
-          npm ci
+      - run: npm ci
       - run: npm run build --if-present
     # - run: npm test
       - run: ls
