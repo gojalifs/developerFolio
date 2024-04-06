@@ -55,7 +55,7 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           passphrase: ${{ secrets.PASSPHRASE }}
-          source: "build/*"
+          source: "build/*,!build"
           target: ${{ secrets.DEPLOY_TARGET }}
             # scp -R build/* ${{ secrets.ECS_USERNAME }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_TARGET }}
 
