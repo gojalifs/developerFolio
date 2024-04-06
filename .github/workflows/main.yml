@@ -31,18 +31,18 @@ jobs:
       - run: npm run build --if-present
       # - run: npm test
 
-      - name: executing remote ssh commands using password
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.DEPLOY_HOST }}
-          username: ${{ secrets.ECS_USERNAME }}
-          key: ${{ secrets.KEY }}
-          port: ${{ secrets.PORT }}
-          passphrase: ${{ secrets.PASSPHRASE }}
-          script: |
-            ls
-            cd ${{ secrets.DEPLOY_TARGET }}
-            # scp -R build/* ${{ secrets.ECS_USERNAME }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_TARGET }}
+      # - name: executing remote ssh commands using password
+      #   uses: appleboy/ssh-action@v1.0.3
+      #   with:
+      #     host: ${{ secrets.DEPLOY_HOST }}
+      #     username: ${{ secrets.ECS_USERNAME }}
+      #     key: ${{ secrets.KEY }}
+      #     port: ${{ secrets.PORT }}
+      #     passphrase: ${{ secrets.PASSPHRASE }}
+      #     script: |
+      #       ls
+      #       cd ${{ secrets.DEPLOY_TARGET }}
+      #       # scp -R build/* ${{ secrets.ECS_USERNAME }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_TARGET }}
 
       - run: ls
         # copy built file into server
@@ -55,7 +55,7 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           passphrase: ${{ secrets.PASSPHRASE }}
-          source: "build/*,!build"
+          source: "build/"
           target: ${{ secrets.DEPLOY_TARGET }}
             # scp -R build/* ${{ secrets.ECS_USERNAME }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_TARGET }}
 
