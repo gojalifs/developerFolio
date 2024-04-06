@@ -10,16 +10,23 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Create env  # Assuming these lines create environment variables
-        run: |
-          echo "REACT_APP_GITHUB_TOKEN=${{ secrets.REACT_APP_GITHUB_TOKEN }}" >> "$GITHUB_ENV"
-          echo "GITHUB_USERNAME=${{ secrets.GITHUB_USERNAME }}" >> "$GITHUB_ENV"
-          echo "USE_GITHUB_DATA=${{ secrets.USE_GH_DATA }}" >> "$GITHUB_ENV"
+    #   - name: Create env  # Assuming these lines create environment variables
+    #     run: |
+    #       echo "REACT_APP_GITHUB_TOKEN=${{ secrets.REACT_APP_GITHUB_TOKEN }}" >> "$GITHUB_ENV"
+    #       echo "GITHUB_USERNAME=${{ secrets.GITHUB_USERNAME }}" >> "$GITHUB_ENV"
+    #       echo "USE_GITHUB_DATA=${{ secrets.USE_GH_DATA }}" >> "$GITHUB_ENV"
 
       - name: Checkout code (limited depth)
         uses: actions/checkout@v3
         with:
           fetch-depth: 1
+
+      - name: Create env 
+        uses: SpicyPizza/create-envfile@v2.0
+        with:
+          envkey_REACT_APP_GITHUB_TOKEN: ${{ secrets.REACT_APP_GITHUB_TOKEN }}
+          envkey_GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
+          envkey_USE_GITHUB_DATA: ${{ secrets.USE_GITHUB_DATA }}
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
@@ -59,7 +66,7 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           source: "build/"
           strip_components: 1
-          target: ${{ secrets.DEPLOY_TARGET_VAR }}
+          target: ${{ secrets.DEPLOY_TARGET }}
       #       # scp -R build/* ${{ secrets.ECS_USERNAME }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_TARGET }}
 
 # Removed commented-out build and deploy steps
